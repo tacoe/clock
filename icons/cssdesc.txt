@@ -1,0 +1,64 @@
+background-image:url("../Images/sprites/weather-icons-medium-remake.png")
+bd -0px 0
+bdg1 -0px -36px
+bdg2 -0px -72px
+bdg3 -0px -108px
+bds1, bdr1 -0px -144px
+bdr2, bds2 -0px -180px
+bds3, bdr3 -0px -216px
+bdsg -0px -252px
+bdsn1, bdsns1 -0px -288px
+bdsns2, bdsn2 -0px -324px
+bdsn3, bdsns3 -0px -360px
+bdsr1, bdgr1, bdsrs1 -0px -396px
+bdsrs2, bdgr2, bdsr2 -0px -432px
+bdsr3, bdgr3, bdsrs3 -0px -468px
+bw -0px -504px
+bwg1, wbg1 -0px -540px
+wbg2, bwg2 -0px -576px
+bwg3, wbg3 -0px -612px
+wbr1, wbs1, bwr1, bws1 -0px -648px
+bws2, bwr2, wbs2, wbr2 -0px -684px
+wbr3, wbs3, bwr3, bws3 -0px -720px
+bwsg, wbsg -39px 0
+wbsn1, wbsns1, bwsn1, bwsns1 -39px -36px
+bwsns2, bwsn2, wbsns2, wbsn2 -39px -72px
+wbsn3, wbsns3, bwsn3, bwsns3 -39px -108px
+bwsr1, bwgr1, bwsrs1, wbsr1, wbsrs1, wbgr1 -39px -144px
+wbgr2, wbsrs2, wbsr2, bwsrs2, bwgr2, bwsr2 -39px -180px
+bwsr3, bwgr3, bwsrs3, wbsr3, wbsrs3, wbgr3 -39px -216px
+mw, mb -39px -252px
+mbg1, mwg1 -39px -288px
+mwg2, mbg2 -39px -324px
+mbg3, mwg3 -39px -360px
+mws1, mwr1, mbs1, mbr1 -39px -396px
+mbr2, mbs2, mwr2, mws2 -39px -432px
+mws3, mwr3, mbs3, mbr3 -39px -468px
+mbsg, mwsg -39px -504px
+mwsn1, mwsns1, mbsn1, mbsns1 -39px -540px
+mbsns2, mbsn2, mwsns2, mwsn2 -39px -576px
+mwsn3, mwsns3, mbsn3, mbsns3 -39px -612px
+mbsr1, mbgr1, mbsrs1, mwsr1, mwsrs1, mwgr1 -39px -648px
+mwgr2, mwsrs2, mwsr2, mbsrs2, mbgr2, mbsr2 -39px -684px
+mbsr3, mbgr3, mbsrs3, mwsr3, mwsrs3, mwgr3 -39px -720px
+md -78px 0
+mdg1 -78px -36px
+mdg2 -78px -72px
+mdg3 -78px -108px
+mdr1, mds1 -78px -144px
+mds2, mdr2 -78px -180px
+mdr3, mds3 -78px -216px
+mdsg -78px -252px
+mdsn1, mdsns1 -78px -288px
+mdsns2, mdsn2 -78px -324px
+mdsn3, mdsns3 -78px -360px
+mdsr1, mdsrs1, mdgr1 -78px -396px
+mdgr2, mdsrs2, mdsr2 -78px -432px
+mdsr3, mdsrs3, mdgr3 -78px -468px
+mm -78px -504px
+mo -78px -540px
+ms -78px -576px
+nb -78px -612px
+ns -78px -648px
+so -78px -684px
+wb -78px -720px
