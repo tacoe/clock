@@ -13,11 +13,11 @@ import pygame
 import urllib2
 import re
 import unicodedata
+import random
 
-counter = 10  # starting point for the running directional counter
-Enc_A = 23    # Encoder input A: input GPIO 23 (active high)
-Enc_B = 24    # Encoder input B: input GPIO 24 (active high)
-Backlight_pin = 18 # NOTE will be 13 for final version
+Enc_A = 23    # TODO check this Encoder input A: input GPIO 23 (active high)
+Enc_B = 24    # TODO Encoder input B: input GPIO 24 (active high)
+backlight_pin = 18 # TODO will be 13 for final version
 size = width, height = 320, 240
 speed = [2, 2]
 black = 0, 0, 0
@@ -35,19 +35,15 @@ icon1 = icon2 = icon3 = ""
 
 def init():
     global screen
-    # IO: encoder and backlight
+    # backlight: set PWM pin mode
+    os.system('gpio -g mode ' + str(backlight_pin) + ' pwm')
 
-    # encoder
+    # prepare encoder
     GPIO.setwarnings(True)
     GPIO.setmode(GPIO.BCM)
     GPIO.setup(Enc_A, GPIO.IN) # pull-ups are too weak, they introduce noise
     GPIO.setup(Enc_B, GPIO.IN)
-    #GPIO.add_event_detect(Enc_A, GPIO.RISING, callback=rotation_decode, bouncetime=2) # bouncetime in mSec
-
-    # backlight
-    #GPIO.setup(backlight_pin, GPIO.OUT)
-    #backlight = GPIO.PWM(backlight_pin, 100)
-    #backlight.start(5)
+    # TODO ENABLE GPIO.add_event_detect(Enc_A, GPIO.RISING, callback=rotation_decode, bouncetime=2) # bouncetime in mSec
 
     # screen and graphics
     os.environ["SDL_FBDEV"] = "/dev/fb1"
@@ -89,6 +85,8 @@ def alarmchange(delta):
     alarmtime = [hours, mins]
 
 def rotation_decode(Enc_A):
+    '''this function is called on button rotation interrupt
+    and changes the alarm clock time by 10 minute increments.'''
     time.sleep(0.002) # debounce
 
     Switch_A = GPIO.input(Enc_A)
@@ -133,6 +131,15 @@ def bs_preprocess(html):
     html = re.sub('[\s]+<', '<', html) # remove whitespaces before opening tags
     html = re.sub('>[\s]+', '>', html) # remove whitespaces after closing tags
     return html
+
+def setbrightness():
+    '''sets display brightness from 8 (near-absolute darkness)
+    to 1023 (sunny)'''
+
+    # TODO read from digital lux meter
+    dc = 8
+    os.system('gpio -g pwm ' + str(backlight_pin) + ' ' + str(dc))
+
 
 def getforecast(offset):
     '''read current weather data and fill relevant vars and icons
@@ -219,6 +226,7 @@ def main():
 
         lastdraw = 0
         lastdata = 0
+        lastbri = 0
 
         while True :
             for event in pygame.event.get():
@@ -231,6 +239,11 @@ def main():
                 lastdraw = time.time()
                 redraw = False
                 draw()
+
+            # update brightness every 5 seconds
+            if time.time() - lastbri > 5:
+                lastbri = time.time()
+                setbrightness()
 
             # data update every 5 mins
             if time.time() - lastdata > 30 * 60:
