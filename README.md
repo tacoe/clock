@@ -1,5 +1,7 @@
 # clock
 
+![Preview](preview.png)
+
 ## Parts
 
 * Raspberry Pi Zero W
